@@ -55,4 +55,9 @@ public class Fornecedores {
         this.endereco = endereco;
     }
     
+    @Override
+    public String toString(){
+        return this.getNome();
+    }
+    
 }
