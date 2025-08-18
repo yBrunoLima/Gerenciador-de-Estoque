@@ -5,6 +5,8 @@
 package io.github.GerenciadorDeEstoque.dao;
 import io.github.GerenciadorDeEstoque.jdbc.Conexao;
 import io.github.GerenciadorDeEstoque.model.Usuarios;
+import io.github.GerenciadorDeEstoque.view.AreaTrabalho;
+import io.github.GerenciadorDeEstoque.view.FormularioLogin;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
@@ -134,6 +136,25 @@ public class UsuariosDAO {
             JOptionPane.showMessageDialog(null, "Usuario excluido");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao tentar excluir usuario");
+        }
+    }
+    
+    public void Logar(String login, String senha){
+        try {
+            String sql = "select * from Usuario where login = ? and senha = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1,login);
+            stmt.setString(2,senha);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(null, "Seja Bem Vindo");
+                AreaTrabalho at = new AreaTrabalho();
+                at.setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(null, "Dados incorretos");
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro");
         }
     }
     
