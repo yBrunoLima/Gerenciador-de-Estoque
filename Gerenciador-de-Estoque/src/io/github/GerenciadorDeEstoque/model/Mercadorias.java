@@ -11,12 +11,8 @@ package io.github.GerenciadorDeEstoque.model;
 public class Mercadorias {
     private int id;
     private String descricao;
-    private Double precoCompra;
-    private Double precoVenda;
+    private Double preco;
     private int qntdEstoque;
-    private int estoqueMin;
-    private int estoqueMax;
-    private String unidade;
     private String tamanho;
     private String modelo;
     private Fornecedores fornecedor;
@@ -37,20 +33,12 @@ public class Mercadorias {
         this.descricao = descricao;
     }
 
-    public Double getPrecoCompra() {
-        return precoCompra;
+    public Double getPreco() {
+        return preco;
     }
 
-    public void setPrecoCompra(Double precoCompra) {
-        this.precoCompra = precoCompra;
-    }
-
-    public Double getPrecoVenda() {
-        return precoVenda;
-    }
-
-    public void setPrecoVenda(Double precoVenda) {
-        this.precoVenda = precoVenda;
+    public void setPreco(Double preco) {
+        this.preco = preco;
     }
 
     public int getQntdEstoque() {
@@ -59,30 +47,6 @@ public class Mercadorias {
 
     public void setQntdEstoque(int qntdEstoque) {
         this.qntdEstoque = qntdEstoque;
-    }
-
-    public int getEstoqueMin() {
-        return estoqueMin;
-    }
-
-    public void setEstoqueMin(int estoqueMin) {
-        this.estoqueMin = estoqueMin;
-    }
-
-    public int getEstoqueMax() {
-        return estoqueMax;
-    }
-
-    public void setEstoqueMax(int estoqueMax) {
-        this.estoqueMax = estoqueMax;
-    }
-
-    public String getUnidade() {
-        return unidade;
-    }
-
-    public void setUnidade(String unidade) {
-        this.unidade = unidade;
     }
 
     public String getTamanho() {
@@ -108,5 +72,7 @@ public class Mercadorias {
     public void setFornecedor(Fornecedores fornecedor) {
         this.fornecedor = fornecedor;
     }
+
+    
     
 }

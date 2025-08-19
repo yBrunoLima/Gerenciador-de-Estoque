@@ -34,12 +34,8 @@ public class FormularioMercadoria extends javax.swing.JFrame {
             dados.addRow(new Object[]{
             m.getId(),
             m.getDescricao(),
-            m.getPrecoCompra(),
-            m.getPrecoVenda(),
+            m.getPreco(),
             m.getQntdEstoque(),
-            m.getEstoqueMin(),
-            m.getEstoqueMax(),
-            m.getUnidade(),
             m.getTamanho(),
             m.getModelo(),
             m.getFornecedor().getNome(),
@@ -72,16 +68,9 @@ public class FormularioMercadoria extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         btnBusca = new javax.swing.JButton();
-        txtPrecoVenda = new javax.swing.JTextField();
+        txtPreco = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        txtPrecoCompra = new javax.swing.JTextField();
-        txtEstoqueMin = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        txtEstoqueMax = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        txtUnidade = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         txtTamanho = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
@@ -149,56 +138,29 @@ public class FormularioMercadoria extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setText("Preco de compra");
-
         jLabel5.setText("Fornecedor");
 
         jLabel6.setText("Quantidade Estoque");
 
-        jLabel7.setText("Estoque Minímo");
-
         btnBusca.setText("Buscar");
+        btnBusca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnBuscaMousePressed(evt);
+            }
+        });
         btnBusca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscaActionPerformed(evt);
             }
         });
 
-        txtPrecoVenda.addActionListener(new java.awt.event.ActionListener() {
+        txtPreco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPrecoVendaActionPerformed(evt);
+                txtPrecoActionPerformed(evt);
             }
         });
 
-        jLabel9.setText("Preco de venda");
-
-        txtPrecoCompra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPrecoCompraActionPerformed(evt);
-            }
-        });
-
-        txtEstoqueMin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEstoqueMinActionPerformed(evt);
-            }
-        });
-
-        jLabel10.setText("Estoque Máximo");
-
-        txtEstoqueMax.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEstoqueMaxActionPerformed(evt);
-            }
-        });
-
-        jLabel11.setText("Unidade");
-
-        txtUnidade.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUnidadeActionPerformed(evt);
-            }
-        });
+        jLabel9.setText("Preco");
 
         jLabel12.setText("Tamanho");
 
@@ -236,13 +198,13 @@ public class FormularioMercadoria extends javax.swing.JFrame {
         painel_cadastroLayout.setHorizontalGroup(
             painel_cadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painel_cadastroLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addContainerGap()
                 .addGroup(painel_cadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painel_cadastroLayout.createSequentialGroup()
-                        .addComponent(jLabel11)
+                        .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtQtndEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -251,46 +213,35 @@ public class FormularioMercadoria extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(painel_cadastroLayout.createSequentialGroup()
-                        .addComponent(jLabel6)
+                        .addComponent(jLabel9)
+                        .addGap(12, 12, 12)
+                        .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18)
+                        .addComponent(cbFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(painel_cadastroLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtQtndEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel7)
+                        .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtEstoqueMin, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtEstoqueMax, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(painel_cadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(painel_cadastroLayout.createSequentialGroup()
-                            .addComponent(jLabel4)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(txtPrecoCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jLabel9)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(txtPrecoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jLabel5)
-                            .addGap(18, 18, 18)
-                            .addComponent(cbFornecedor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painel_cadastroLayout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jLabel3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btnBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(btnBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
                 .addContainerGap(71, Short.MAX_VALUE))
         );
         painel_cadastroLayout.setVerticalGroup(
             painel_cadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painel_cadastroLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addGap(54, 54, 54)
+                .addComponent(jLabel4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painel_cadastroLayout.createSequentialGroup()
+                .addContainerGap(46, Short.MAX_VALUE)
                 .addGroup(painel_cadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -299,29 +250,19 @@ public class FormularioMercadoria extends javax.swing.JFrame {
                     .addComponent(btnBusca))
                 .addGap(18, 18, 18)
                 .addGroup(painel_cadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
                     .addComponent(jLabel9)
-                    .addComponent(txtPrecoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(txtPrecoCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14)
                 .addGroup(painel_cadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txtQtndEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
-                    .addComponent(txtEstoqueMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10)
-                    .addComponent(txtEstoqueMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(painel_cadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(txtUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12)
                     .addComponent(txtTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13)
                     .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addGap(32, 32, 32))
         );
 
         painel_guias.addTab("Cadastro", painel_cadastro);
@@ -343,13 +284,13 @@ public class FormularioMercadoria extends javax.swing.JFrame {
 
         tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Descrição", "PreçoCompra", "PreçoVenda", "QtndEstoque", "EstoqueMin", "EstoqueMax", "Unidade", "Tamanho", "Modelo", "Fornecedor"
+                "ID", "Descrição", "Preço", "QtndEstoque", "Tamanho", "Modelo", "Fornecedor"
             }
         ));
         tabela.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -370,7 +311,7 @@ public class FormularioMercadoria extends javax.swing.JFrame {
                 .addComponent(txtBuscaNome, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnBuscaNome, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(317, Short.MAX_VALUE))
+                .addContainerGap(290, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painel_consultaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane3)
@@ -488,12 +429,8 @@ public class FormularioMercadoria extends javax.swing.JFrame {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         Mercadorias obj = new Mercadorias();
         obj.setDescricao(txtDescricao.getText());
-        obj.setPrecoCompra(Double.valueOf(txtPrecoCompra.getText()));
-        obj.setPrecoVenda(Double.valueOf(txtPrecoVenda.getText()));
+        obj.setPreco(Double.valueOf(txtPreco.getText()));
         obj.setQntdEstoque(Integer.valueOf(txtQtndEstoque.getText()));
-        obj.setEstoqueMin(Integer.valueOf(txtEstoqueMin.getText()));
-        obj.setEstoqueMax(Integer.valueOf(txtEstoqueMax.getText()));
-        obj.setUnidade(txtUnidade.getText());
         obj.setTamanho(txtTamanho.getText());
         obj.setModelo(txtModelo.getText());
         obj.setFornecedor((Fornecedores) cbFornecedor.getSelectedItem());
@@ -517,12 +454,8 @@ public class FormularioMercadoria extends javax.swing.JFrame {
         }else{
             txtID.setText(String.valueOf(obj.getId()));
             txtDescricao.setText(obj.getDescricao());
-            txtPrecoCompra.setText(String.valueOf(obj.getPrecoCompra()));
-            txtPrecoVenda.setText(String.valueOf(obj.getPrecoVenda()));
+            txtPreco.setText(String.valueOf(obj.getPreco()));
             txtQtndEstoque.setText(String.valueOf(obj.getQntdEstoque()));
-            txtEstoqueMin.setText(String.valueOf(obj.getEstoqueMin()));
-            txtEstoqueMax.setText(String.valueOf(obj.getEstoqueMax()));
-            txtUnidade.setText(obj.getUnidade());
             txtTamanho.setText(obj.getTamanho());
             txtModelo.setText(obj.getModelo());
             f = fdao.Buscar(obj.getFornecedor().getNome());
@@ -550,12 +483,8 @@ public class FormularioMercadoria extends javax.swing.JFrame {
             dados.addRow(new Object[]{
             m.getId(),
             m.getDescricao(),
-            m.getPrecoCompra(),
-            m.getPrecoVenda(),
+            m.getPreco(),
             m.getQntdEstoque(),
-            m.getEstoqueMin(),
-            m.getEstoqueMax(),
-            m.getUnidade(),
             m.getTamanho(),
             m.getModelo(),
             m.getFornecedor().getNome(),
@@ -566,12 +495,8 @@ public class FormularioMercadoria extends javax.swing.JFrame {
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         Mercadorias obj = new Mercadorias();
         obj.setDescricao(txtDescricao.getText());
-        obj.setPrecoCompra(Double.valueOf(txtPrecoCompra.getText()));
-        obj.setPrecoVenda(Double.valueOf(txtPrecoVenda.getText()));
+        obj.setPreco(Double.valueOf(txtPreco.getText()));
         obj.setQntdEstoque(Integer.valueOf(txtQtndEstoque.getText()));
-        obj.setEstoqueMin(Integer.valueOf(txtEstoqueMin.getText()));
-        obj.setEstoqueMax(Integer.valueOf(txtEstoqueMax.getText()));
-        obj.setUnidade(txtUnidade.getText());
         obj.setTamanho(txtTamanho.getText());
         obj.setModelo(txtModelo.getText());
         Fornecedores f = new Fornecedores();
@@ -595,25 +520,9 @@ public class FormularioMercadoria extends javax.swing.JFrame {
         util.LimparTela(painel_cadastro);
     }//GEN-LAST:event_btnExcluirActionPerformed
 
-    private void txtPrecoVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecoVendaActionPerformed
+    private void txtPrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtPrecoVendaActionPerformed
-
-    private void txtPrecoCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecoCompraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPrecoCompraActionPerformed
-
-    private void txtEstoqueMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEstoqueMinActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEstoqueMinActionPerformed
-
-    private void txtEstoqueMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEstoqueMaxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEstoqueMaxActionPerformed
-
-    private void txtUnidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUnidadeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUnidadeActionPerformed
+    }//GEN-LAST:event_txtPrecoActionPerformed
 
     private void txtTamanhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTamanhoActionPerformed
         // TODO add your handling code here:
@@ -627,17 +536,13 @@ public class FormularioMercadoria extends javax.swing.JFrame {
         painel_guias.setSelectedIndex(0);
         txtID.setText(tabela.getValueAt(tabela.getSelectedRow(), 0).toString());
         txtDescricao.setText(tabela.getValueAt(tabela.getSelectedRow(), 1).toString());
-        txtPrecoCompra.setText(tabela.getValueAt(tabela.getSelectedRow(), 2).toString());
-        txtPrecoVenda.setText(tabela.getValueAt(tabela.getSelectedRow(), 3).toString());
-        txtQtndEstoque.setText(tabela.getValueAt(tabela.getSelectedRow(), 4).toString());
-        txtEstoqueMin.setText(tabela.getValueAt(tabela.getSelectedRow(), 5).toString());
-        txtEstoqueMax.setText(tabela.getValueAt(tabela.getSelectedRow(), 6).toString());
-        txtUnidade.setText(tabela.getValueAt(tabela.getSelectedRow(), 7).toString());
-        txtTamanho.setText(tabela.getValueAt(tabela.getSelectedRow(), 8).toString());
-        txtModelo.setText(tabela.getValueAt(tabela.getSelectedRow(), 9).toString());
+        txtPreco.setText(tabela.getValueAt(tabela.getSelectedRow(), 2).toString());
+        txtQtndEstoque.setText(tabela.getValueAt(tabela.getSelectedRow(), 3).toString());
+        txtTamanho.setText(tabela.getValueAt(tabela.getSelectedRow(), 4).toString());
+        txtModelo.setText(tabela.getValueAt(tabela.getSelectedRow(), 5).toString());
         Fornecedores f = new Fornecedores();
         FornecedoresDAO fdao = new FornecedoresDAO();
-        f = fdao.Buscar(tabela.getValueAt(tabela.getSelectedRow(),10).toString());
+        f = fdao.Buscar(tabela.getValueAt(tabela.getSelectedRow(),6).toString());
         cbFornecedor.removeAllItems();
         cbFornecedor.getModel().setSelectedItem(f);
     }//GEN-LAST:event_tabelaMouseClicked
@@ -659,6 +564,10 @@ public class FormularioMercadoria extends javax.swing.JFrame {
             cbFornecedor.addItem(f);
         }
     }//GEN-LAST:event_cbFornecedorMouseClicked
+
+    private void btnBuscaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscaMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscaMousePressed
 
     /**
      * @param args the command line arguments
@@ -694,8 +603,6 @@ public class FormularioMercadoria extends javax.swing.JFrame {
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox cbFornecedor;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
@@ -703,7 +610,6 @@ public class FormularioMercadoria extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -715,14 +621,10 @@ public class FormularioMercadoria extends javax.swing.JFrame {
     private javax.swing.JTable tabela;
     private javax.swing.JTextField txtBuscaNome;
     private javax.swing.JTextField txtDescricao;
-    private javax.swing.JTextField txtEstoqueMax;
-    private javax.swing.JTextField txtEstoqueMin;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtModelo;
-    private javax.swing.JTextField txtPrecoCompra;
-    private javax.swing.JTextField txtPrecoVenda;
+    private javax.swing.JTextField txtPreco;
     private javax.swing.JTextField txtQtndEstoque;
     private javax.swing.JTextField txtTamanho;
-    private javax.swing.JTextField txtUnidade;
     // End of variables declaration//GEN-END:variables
 }

@@ -62,6 +62,28 @@ public class ClientesDAO {
         return null;
     }
     
+    public Clientes BuscarCpf(String cpf){
+        try {
+            String sql = "select * from Cliente where cpf = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, cpf);
+            ResultSet rs = stmt.executeQuery();
+            Clientes obj = new Clientes();
+            if (rs.next()) {
+                obj.setId(rs.getInt("id_cliente"));
+                obj.setNome(rs.getString("nome"));
+                obj.setTelefone(rs.getString("telefone"));
+                obj.setEmail(rs.getString("email"));
+                obj.setCpf(rs.getString("cpf"));
+                obj.setEndereco(rs.getString("endereco"));
+            }
+            return obj;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao tentar buscar cliente");
+        }
+        return null;
+    }
+    
     public List<Clientes>Listar(){
         List<Clientes> lista = new ArrayList<>();
         try {
