@@ -4,8 +4,16 @@
  */
 package io.github.GerenciadorDeEstoque.view;
 
+import io.github.GerenciadorDeEstoque.dao.ItensVendasDAO;
+import io.github.GerenciadorDeEstoque.dao.MercadoriasDAO;
+import io.github.GerenciadorDeEstoque.dao.VendasDAO;
 import io.github.GerenciadorDeEstoque.model.Clientes;
 import io.github.GerenciadorDeEstoque.model.ItensVendas;
+import io.github.GerenciadorDeEstoque.model.Mercadorias;
+import io.github.GerenciadorDeEstoque.model.Vendas;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -25,6 +33,8 @@ public class FormularioPagamento extends javax.swing.JFrame {
      */
     public FormularioPagamento() {
         initComponents();
+        txtDinheiro.setText("0");
+        txtCartao.setText("0");
     }
 
     /**
@@ -46,6 +56,7 @@ public class FormularioPagamento extends javax.swing.JFrame {
         txtDinheiro = new javax.swing.JTextField();
         txtTotal = new javax.swing.JTextField();
         txtTroco = new javax.swing.JTextField();
+        btnPagar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Pagamento");
@@ -90,9 +101,17 @@ public class FormularioPagamento extends javax.swing.JFrame {
             }
         });
 
+        txtTroco.setEnabled(false);
         txtTroco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTrocoActionPerformed(evt);
+            }
+        });
+
+        btnPagar.setText("Pagar");
+        btnPagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPagarActionPerformed(evt);
             }
         });
 
@@ -110,12 +129,17 @@ public class FormularioPagamento extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtTroco, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
-                        .addComponent(txtCartao)
-                        .addComponent(txtDinheiro))
-                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(419, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(419, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtTroco, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
+                            .addComponent(txtCartao)
+                            .addComponent(txtDinheiro))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(118, 118, 118))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,19 +149,24 @@ public class FormularioPagamento extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtDinheiro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtCartao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtTroco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(txtCartao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(txtTroco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(btnPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 46, Short.MAX_VALUE))
+                .addGap(0, 35, Short.MAX_VALUE))
         );
 
         pack();
@@ -155,6 +184,48 @@ public class FormularioPagamento extends javax.swing.JFrame {
     private void txtTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTotalActionPerformed
+
+    private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
+        Double dinheiro, cartao, totalVenda, troco, totalPago;
+        dinheiro = Double.valueOf(txtDinheiro.getText());
+        cartao = Double.valueOf(txtCartao.getText());
+        totalVenda = Double.valueOf(txtTotal.getText());
+        totalPago = dinheiro + cartao;
+        troco = totalPago - totalVenda;
+        txtTroco.setText(String.valueOf(troco));
+
+        if (totalPago>=totalVenda) {
+            Vendas v = new Vendas();
+            Date agr = new Date();
+            SimpleDateFormat data = new SimpleDateFormat("yyyy-MM-dddd HH:mm:ss");
+            String datasql = data.format(agr);
+            v.setData(datasql);
+            v.setTotal(totalVenda);
+            v.setCliente(cliente);
+            VendasDAO vdao = new VendasDAO();
+            vdao.Salvar(v);
+            v.setId(vdao.RetornaIdVenda());
+            
+            for (int i = 0; i < meus_produtos.getRowCount(); i++) {
+                int qntComprada;
+                Mercadorias m = new Mercadorias();
+                MercadoriasDAO mdao = new MercadoriasDAO();
+                ItensVendas item = new ItensVendas();
+                item.setVendas(v);     
+                m.setId(Integer.valueOf(meus_produtos.getValueAt(i, 0).toString()));    
+                item.setMercadorias(m);
+                item.setQnt(Integer.valueOf(meus_produtos.getValueAt(i, 2).toString()));
+                item.setSubtotal(Double.valueOf(meus_produtos.getValueAt(i, 4).toString()));
+                qntComprada = Integer.valueOf(meus_produtos.getValueAt(i, 2).toString());
+                mdao.DiminuirEstoque(m.getId(), qntComprada);
+                ItensVendasDAO idao = new ItensVendasDAO();
+                idao.Salvar(item);
+                dispose();
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Erro ao efetuar venda (valor insuficiente)");
+        }
+    }//GEN-LAST:event_btnPagarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,6 +253,7 @@ public class FormularioPagamento extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnPagar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

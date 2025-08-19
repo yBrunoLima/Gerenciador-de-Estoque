@@ -552,7 +552,13 @@ public class FormularioVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPagarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
+
+        meus_produtos = (DefaultTableModel)tabelaCarrinho.getModel();
+        if (meus_produtos != null) {
+            meus_produtos.setRowCount(0);
+            txtTotal.setText("");
+            total = 0.0;
+        }
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void tabelaCarrinhoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaCarrinhoMouseClicked
@@ -614,7 +620,7 @@ public class FormularioVendas extends javax.swing.JFrame {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         listar();
         Date agr = new Date();
-        SimpleDateFormat fmt = new SimpleDateFormat("dd/mm/yyyy HH:mm");
+        SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         String dataform = fmt.format(agr);
         txtData.setText(dataform);
     }//GEN-LAST:event_formWindowActivated

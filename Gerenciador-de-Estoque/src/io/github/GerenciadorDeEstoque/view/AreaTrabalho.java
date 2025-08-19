@@ -48,6 +48,7 @@ public class AreaTrabalho extends javax.swing.JFrame {
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
@@ -116,6 +117,9 @@ public class AreaTrabalho extends javax.swing.JFrame {
             }
         });
         jMenu6.add(jMenuItem1);
+
+        jMenuItem2.setText("Controle de Estoque");
+        jMenu6.add(jMenuItem2);
 
         jMenuBar3.add(jMenu6);
 
@@ -229,6 +233,7 @@ public class AreaTrabalho extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;

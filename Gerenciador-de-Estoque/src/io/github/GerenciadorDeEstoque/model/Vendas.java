@@ -12,7 +12,7 @@ public class Vendas {
     private int id;
     private String data;
     private Double total;
-    private Clientes id_cliente;
+    private Clientes cliente;
 
     public int getId() {
         return id;
@@ -38,12 +38,12 @@ public class Vendas {
         this.total = total;
     }
 
-    public Clientes getId_cliente() {
-        return id_cliente;
+    public Clientes getCliente() {
+        return cliente;
     }
 
-    public void setId_cliente(Clientes id_cliente) {
-        this.id_cliente = id_cliente;
+    public void setCliente(Clientes cliente) {
+        this.cliente = cliente;
     }
     
 }

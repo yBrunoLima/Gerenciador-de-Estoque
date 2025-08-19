@@ -181,4 +181,47 @@ public class MercadoriasDAO {
         return null;
     }
     
+    public int EstoqueAtual(int id){
+        try {
+            int qtdAtual=0;
+            String sql = "select QtdeEstoque from Mercadoria where id_mercadoria = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                qtdAtual = (rs.getInt("QtdeEstoque"));
+            }
+            return qtdAtual;
+        } catch (Exception e) {
+            throw new RuntimeException("Erro ao retornar estoque");
+        }
+    }
+    
+    public void AdicionarEstoque(int id, int qntd){
+        try {
+            String sql = "update Mercadoria set QtdeEstoque = QtdeEstoque + ? where id_mercadoria = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, qntd);
+            stmt.setInt(2, id);
+            stmt.execute();
+            stmt.close();
+            JOptionPane.showMessageDialog(null, "Adicionado com sucesso");
+        } catch (Exception e) {
+             JOptionPane.showMessageDialog(null, "Erro ao adicionar");
+        }
+    }
+    
+    public void DiminuirEstoque(int id, int qntd){
+        try {
+            String sql = "update Mercadoria set QtdeEstoque = QtdeEstoque - ? where id_mercadoria = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, qntd);
+            stmt.setInt(2, id);
+            stmt.execute();
+            stmt.close();
+        } catch (Exception e) {
+             JOptionPane.showMessageDialog(null, "Erro ao diminuir");
+        }
+    }
+    
 }
