@@ -186,9 +186,25 @@ public class FormularioPagamento extends javax.swing.JFrame {
     }//GEN-LAST:event_txtTotalActionPerformed
 
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
-        Double dinheiro, cartao, totalVenda, troco, totalPago;
-        dinheiro = Double.valueOf(txtDinheiro.getText());
-        cartao = Double.valueOf(txtCartao.getText());
+        Double dinheiro=0.0, cartao=0.0, totalVenda, troco, totalPago;
+        if (!txtDinheiro.getText().isEmpty()) {
+            try {
+                dinheiro = Double.valueOf(txtDinheiro.getText());
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Valor inválido no campo Dinheiro.");
+                return;
+            }
+        }
+
+        if (!txtCartao.getText().isEmpty()) {
+            try {
+                cartao = Double.valueOf(txtCartao.getText());
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Valor inválido no campo Cartão.");
+                return;
+            }
+        }
+
         totalVenda = Double.valueOf(txtTotal.getText());
         totalPago = dinheiro + cartao;
         troco = totalPago - totalVenda;

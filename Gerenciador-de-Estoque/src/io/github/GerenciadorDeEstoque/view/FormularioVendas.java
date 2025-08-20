@@ -95,7 +95,7 @@ public class FormularioVendas extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tabelaMercadoria = new javax.swing.JTable();
         txtQtd = new javax.swing.JTextField();
-        txtDesconto = new javax.swing.JFormattedTextField();
+        txtDesconto = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaCarrinho = new javax.swing.JTable();
@@ -294,12 +294,6 @@ public class FormularioVendas extends javax.swing.JFrame {
 
         txtQtd.setText("1");
 
-        try {
-            txtDesconto.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -313,7 +307,7 @@ public class FormularioVendas extends javax.swing.JFrame {
                             .addComponent(jLabel8))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -349,7 +343,7 @@ public class FormularioVendas extends javax.swing.JFrame {
                                             .addGroup(jPanel3Layout.createSequentialGroup()
                                                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txtDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(0, 0, Short.MAX_VALUE))))
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addGap(81, 81, 81)
@@ -543,6 +537,7 @@ public class FormularioVendas extends javax.swing.JFrame {
             FormularioPagamento telap = new FormularioPagamento();
             telap.cliente = cliente;
             telap.meus_produtos = meus_produtos;
+            total -= total * (Double.valueOf(txtDesconto.getText())/100);
             telap.txtTotal.setText(String.valueOf(total));
             telap.setVisible(true);
             this.dispose();
@@ -715,7 +710,7 @@ public class FormularioVendas extends javax.swing.JFrame {
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JFormattedTextField txtCpf;
     private javax.swing.JTextField txtData;
-    private javax.swing.JFormattedTextField txtDesconto;
+    private javax.swing.JTextField txtDesconto;
     private javax.swing.JTextField txtEstoque;
     private javax.swing.JTextField txtNomeCliente;
     private javax.swing.JTextField txtNomeProduto;

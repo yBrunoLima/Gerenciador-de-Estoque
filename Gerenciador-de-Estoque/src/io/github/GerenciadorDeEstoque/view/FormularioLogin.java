@@ -135,6 +135,7 @@ public class FormularioLogin extends javax.swing.JFrame {
             senha = txtSenha.getText();
             UsuariosDAO dao = new UsuariosDAO();
             dao.Logar(login, senha);
+            this.dispose();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro");
         }
