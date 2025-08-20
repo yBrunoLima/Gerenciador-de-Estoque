@@ -59,6 +59,7 @@ public class AreaTrabalho extends javax.swing.JFrame {
         jMenuItem7 = new javax.swing.JMenuItem();
         menuConfig = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
         menuSair = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
 
@@ -204,6 +205,14 @@ public class AreaTrabalho extends javax.swing.JFrame {
         });
         menuConfig.add(jMenuItem4);
 
+        jMenuItem8.setText("Relatórios");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        menuConfig.add(jMenuItem8);
+
         jMenuBar3.add(menuConfig);
 
         menuSair.setText("Sair");
@@ -298,6 +307,12 @@ public class AreaTrabalho extends javax.swing.JFrame {
         lblLogado.setText(UsuarioAtual);
     }//GEN-LAST:event_formWindowActivated
 
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+       FormularioRelatorios fr = new FormularioRelatorios(this,true);
+       fr.setModal(rootPaneCheckingEnabled);
+       fr.setVisible(true);
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -336,6 +351,7 @@ public class AreaTrabalho extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblLogado;
     public javax.swing.JMenu menuCliente;

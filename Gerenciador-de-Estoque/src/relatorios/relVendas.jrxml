@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="51dffdaf-4cd4-4762-98a3-a6959db228f1">
+	<property name="ireport.zoom" value="1.0000000000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+    v.ID_Venda AS ID,
+    DATE_FORMAT(v.DataVenda, '%d/%m/%Y') as Data,
+    c.Nome AS Cliente,
+    CONCAT('R$ ', FORMAT(v.ValorTotal, 2, 'pt_BR')) as Total
+FROM
+    Venda AS v
+INNER JOIN
+    Cliente AS c ON (v.ID_Cliente = c.ID_Cliente);]]>
+	</queryString>
+	<field name="ID" class="java.lang.Integer"/>
+	<field name="Data" class="java.lang.String"/>
+	<field name="Cliente" class="java.lang.String"/>
+	<field name="Total" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="3" y="11" width="552" height="35" uuid="269fea0c-ece2-4351-9305-b955b6b043ab"/>
+				<textElement textAlignment="Center">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Relatório de Vendas]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="3" y="0" width="100" height="20" uuid="efe5b0c5-fc78-479c-8924-aece7eb8ac5d"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="138" height="20" uuid="1f992cd1-bdef-4abd-aa99-e2e3587c286d"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="138" y="0" width="138" height="20" uuid="28759260-1585-4db7-ab42-bfeee463e365"/>
+				<text><![CDATA[Data]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="276" y="0" width="138" height="20" uuid="7687aa96-73a9-407c-90ba-e5e1a425fe73"/>
+				<text><![CDATA[Cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="414" y="0" width="138" height="20" uuid="9dbf5125-d492-49fa-aa25-8c456b810a8b"/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<line>
+				<reportElement x="3" y="15" width="549" height="1" uuid="bc801ccf-f788-4724-b731-23d99e3a1989"/>
+			</line>
+			<textField>
+				<reportElement x="0" y="0" width="138" height="20" uuid="6486552d-7943-4758-a054-37c283ca7222"/>
+				<textFieldExpression><![CDATA[$F{ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="138" y="0" width="138" height="20" uuid="91cb9b91-9e4e-4a51-bc42-40a74dea2ef9"/>
+				<textFieldExpression><![CDATA[$F{Data}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="276" y="0" width="138" height="20" uuid="5e104140-c683-4cf2-adc2-c72436bfa361"/>
+				<textFieldExpression><![CDATA[$F{Cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="414" y="0" width="138" height="20" uuid="04f507c7-b905-4158-815b-42d346285bb7"/>
+				<textFieldExpression><![CDATA[$F{Total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="527" y="34" width="25" height="20" uuid="e3227586-1290-4e8d-901c-4c534d14278e"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

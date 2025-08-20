@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="51dffdaf-4cd4-4762-98a3-a6959db228f1">
+	<property name="ireport.zoom" value="1.0000000000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+    CONCAT('R$ ', FORMAT(SUM(IF(DataVenda = CURDATE(), ValorTotal, 0)), 2, 'pt_BR')) AS TotalHoje,
+    CONCAT('R$ ', FORMAT(SUM(IF(YEARWEEK(DataVenda, 0) = YEARWEEK(CURDATE(), 0), ValorTotal, 0)), 2, 'pt_BR')) AS TotalSemana,
+    CONCAT('R$ ', FORMAT(SUM(IF(YEAR(DataVenda) = YEAR(CURDATE()) AND MONTH(DataVenda) = MONTH(CURDATE()), ValorTotal, 0)), 2, 'pt_BR')) AS TotalMes
+FROM
+    Venda;]]>
+	</queryString>
+	<field name="TotalHoje" class="java.lang.String"/>
+	<field name="TotalSemana" class="java.lang.String"/>
+	<field name="TotalMes" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="3" y="11" width="552" height="35" uuid="269fea0c-ece2-4351-9305-b955b6b043ab"/>
+				<textElement textAlignment="Center">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Relatório Financeiro]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="3" y="0" width="100" height="20" uuid="efe5b0c5-fc78-479c-8924-aece7eb8ac5d"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="185" height="20" uuid="e4b05248-dd97-47d6-8e5e-e5d253d9c7d5"/>
+				<text><![CDATA[TotalHoje]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="185" y="0" width="185" height="20" uuid="a195326a-b949-4487-88a7-872c3ca7e30b"/>
+				<text><![CDATA[TotalSemana]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="370" y="0" width="185" height="20" uuid="bdcfe96e-e819-4b90-9f8d-532533467c3a"/>
+				<text><![CDATA[TotalMes]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<line>
+				<reportElement x="3" y="15" width="549" height="1" uuid="bc801ccf-f788-4724-b731-23d99e3a1989"/>
+			</line>
+			<textField>
+				<reportElement x="0" y="0" width="185" height="20" uuid="6adaa8e1-f51c-4d75-98e0-366f3b06e93b"/>
+				<textFieldExpression><![CDATA[$F{TotalHoje}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="185" y="0" width="185" height="20" uuid="8b07d10c-c382-48ee-b4c5-029d4b566750"/>
+				<textFieldExpression><![CDATA[$F{TotalSemana}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="370" y="0" width="185" height="20" uuid="dcd290a3-0d23-4a41-a3f7-a270824aa418"/>
+				<textFieldExpression><![CDATA[$F{TotalMes}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="527" y="34" width="25" height="20" uuid="e3227586-1290-4e8d-901c-4c534d14278e"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
