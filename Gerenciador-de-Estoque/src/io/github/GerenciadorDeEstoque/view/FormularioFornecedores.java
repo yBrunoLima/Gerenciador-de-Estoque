@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author tkmaia
  */
-public class FormularioFornecedores extends javax.swing.JFrame {
+public class FormularioFornecedores extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormularioFornecedores.class.getName());
 
@@ -39,7 +39,8 @@ public class FormularioFornecedores extends javax.swing.JFrame {
         }
     }
     
-    public FormularioFornecedores() {
+    public FormularioFornecedores(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
     }
 
@@ -498,7 +499,7 @@ public class FormularioFornecedores extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new FormularioFornecedores().setVisible(true));
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

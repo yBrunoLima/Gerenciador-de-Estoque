@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author tkmaia
  */
-public class FormularioMercadoria extends javax.swing.JFrame {
+public class FormularioMercadoria extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormularioMercadoria.class.getName());
 
@@ -43,7 +43,8 @@ public class FormularioMercadoria extends javax.swing.JFrame {
         }
     }
     
-    public FormularioMercadoria() {
+    public FormularioMercadoria(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
     }
 
@@ -591,7 +592,7 @@ public class FormularioMercadoria extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new FormularioMercadoria().setVisible(true));
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

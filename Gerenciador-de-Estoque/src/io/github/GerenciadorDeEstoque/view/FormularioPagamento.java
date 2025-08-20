@@ -221,6 +221,8 @@ public class FormularioPagamento extends javax.swing.JFrame {
                 ItensVendasDAO idao = new ItensVendasDAO();
                 idao.Salvar(item);
                 dispose();
+                FormularioVendas fv = new FormularioVendas();
+                fv.setVisible(true);
             }
         }else{
             JOptionPane.showMessageDialog(null, "Erro ao efetuar venda (valor insuficiente)");

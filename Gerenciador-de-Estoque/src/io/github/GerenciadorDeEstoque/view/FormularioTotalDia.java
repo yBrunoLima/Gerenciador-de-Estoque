@@ -6,21 +6,21 @@ package io.github.GerenciadorDeEstoque.view;
 
 import io.github.GerenciadorDeEstoque.dao.VendasDAO;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 /**
  *
  * @author tkmaia
  */
-public class FormularioTotalDia extends javax.swing.JFrame {
+public class FormularioTotalDia extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormularioTotalDia.class.getName());
 
     /**
      * Creates new form FormularioTotalDia
      */
-    public FormularioTotalDia() {
+    public FormularioTotalDia(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
     }
 
@@ -178,7 +178,7 @@ public class FormularioTotalDia extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new FormularioTotalDia().setVisible(true));
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

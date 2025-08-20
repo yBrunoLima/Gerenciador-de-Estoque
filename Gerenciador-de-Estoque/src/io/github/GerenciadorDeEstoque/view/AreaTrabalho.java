@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 public class AreaTrabalho extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AreaTrabalho.class.getName());
-
+    public String UsuarioAtual;
     /**
      * Creates new form AreaTrabalho
      */
@@ -42,29 +42,37 @@ public class AreaTrabalho extends javax.swing.JFrame {
         };
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        lblLogado = new javax.swing.JLabel();
         jMenuBar3 = new javax.swing.JMenuBar();
-        jMenu3 = new javax.swing.JMenu();
+        menuUsuario = new javax.swing.JMenu();
         jMenuItem12 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
+        menuCliente = new javax.swing.JMenu();
         jMenuItem11 = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
+        menuFornecedores = new javax.swing.JMenu();
         jMenuItem10 = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
+        menuMercadorias = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu7 = new javax.swing.JMenu();
+        menuVendas = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
-        jMenu8 = new javax.swing.JMenu();
+        menuConfig = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
-        jMenu9 = new javax.swing.JMenu();
+        menuSair = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gerenciador de Estoque");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jLabel1.setText("Usuário:");
+
+        lblLogado.setText("Nome");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -73,13 +81,17 @@ public class AreaTrabalho extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(636, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblLogado, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(441, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(lblLogado))
                 .addContainerGap())
         );
 
@@ -98,7 +110,7 @@ public class AreaTrabalho extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jMenu3.setText("Usuários");
+        menuUsuario.setText("Usuários");
 
         jMenuItem12.setText("Formulario de Usuários");
         jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
@@ -106,11 +118,11 @@ public class AreaTrabalho extends javax.swing.JFrame {
                 jMenuItem12ActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem12);
+        menuUsuario.add(jMenuItem12);
 
-        jMenuBar3.add(jMenu3);
+        jMenuBar3.add(menuUsuario);
 
-        jMenu4.setText("Clientes");
+        menuCliente.setText("Clientes");
 
         jMenuItem11.setText("Formulario de Clientes");
         jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
@@ -118,11 +130,11 @@ public class AreaTrabalho extends javax.swing.JFrame {
                 jMenuItem11ActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem11);
+        menuCliente.add(jMenuItem11);
 
-        jMenuBar3.add(jMenu4);
+        jMenuBar3.add(menuCliente);
 
-        jMenu5.setText("Fornecedores");
+        menuFornecedores.setText("Fornecedores");
 
         jMenuItem10.setText("Formulario de Fornecedores");
         jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
@@ -130,11 +142,11 @@ public class AreaTrabalho extends javax.swing.JFrame {
                 jMenuItem10ActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem10);
+        menuFornecedores.add(jMenuItem10);
 
-        jMenuBar3.add(jMenu5);
+        jMenuBar3.add(menuFornecedores);
 
-        jMenu6.setText("Mercadorias");
+        menuMercadorias.setText("Mercadorias");
 
         jMenuItem1.setText("Formulario de Mercadorias");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -142,7 +154,7 @@ public class AreaTrabalho extends javax.swing.JFrame {
                 jMenuItem1ActionPerformed(evt);
             }
         });
-        jMenu6.add(jMenuItem1);
+        menuMercadorias.add(jMenuItem1);
 
         jMenuItem2.setText("Controle de Estoque");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -150,11 +162,11 @@ public class AreaTrabalho extends javax.swing.JFrame {
                 jMenuItem2ActionPerformed(evt);
             }
         });
-        jMenu6.add(jMenuItem2);
+        menuMercadorias.add(jMenuItem2);
 
-        jMenuBar3.add(jMenu6);
+        jMenuBar3.add(menuMercadorias);
 
-        jMenu7.setText("Vendas");
+        menuVendas.setText("Vendas");
 
         jMenuItem5.setText("Abrir Ponto de Venda");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
@@ -162,7 +174,7 @@ public class AreaTrabalho extends javax.swing.JFrame {
                 jMenuItem5ActionPerformed(evt);
             }
         });
-        jMenu7.add(jMenuItem5);
+        menuVendas.add(jMenuItem5);
 
         jMenuItem6.setText("Fluxo do dia");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
@@ -170,7 +182,7 @@ public class AreaTrabalho extends javax.swing.JFrame {
                 jMenuItem6ActionPerformed(evt);
             }
         });
-        jMenu7.add(jMenuItem6);
+        menuVendas.add(jMenuItem6);
 
         jMenuItem7.setText("Historico");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
@@ -178,11 +190,11 @@ public class AreaTrabalho extends javax.swing.JFrame {
                 jMenuItem7ActionPerformed(evt);
             }
         });
-        jMenu7.add(jMenuItem7);
+        menuVendas.add(jMenuItem7);
 
-        jMenuBar3.add(jMenu7);
+        jMenuBar3.add(menuVendas);
 
-        jMenu8.setText("Configurações");
+        menuConfig.setText("Configurações");
 
         jMenuItem4.setText("Trocar Usuário");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
@@ -190,11 +202,11 @@ public class AreaTrabalho extends javax.swing.JFrame {
                 jMenuItem4ActionPerformed(evt);
             }
         });
-        jMenu8.add(jMenuItem4);
+        menuConfig.add(jMenuItem4);
 
-        jMenuBar3.add(jMenu8);
+        jMenuBar3.add(menuConfig);
 
-        jMenu9.setText("Sair");
+        menuSair.setText("Sair");
 
         jMenuItem3.setText("Sair");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
@@ -202,9 +214,9 @@ public class AreaTrabalho extends javax.swing.JFrame {
                 jMenuItem3ActionPerformed(evt);
             }
         });
-        jMenu9.add(jMenuItem3);
+        menuSair.add(jMenuItem3);
 
-        jMenuBar3.add(jMenu9);
+        jMenuBar3.add(menuSair);
 
         setJMenuBar(jMenuBar3);
 
@@ -231,22 +243,26 @@ public class AreaTrabalho extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
-        FormularioUsuarios fu = new FormularioUsuarios();
+        FormularioUsuarios fu = new FormularioUsuarios(this,true);
+        fu.setModal(rootPaneCheckingEnabled);
         fu.setVisible(true);
     }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
-        FormularioClientes fc = new FormularioClientes();
+        FormularioClientes fc = new FormularioClientes(this,true);
+        fc.setModal(rootPaneCheckingEnabled);
         fc.setVisible(true);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
-        FormularioFornecedores ff = new FormularioFornecedores();
+        FormularioFornecedores ff = new FormularioFornecedores(this,true);
+        ff.setModal(rootPaneCheckingEnabled);
         ff.setVisible(true);
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        FormularioMercadoria fm = new FormularioMercadoria();
+        FormularioMercadoria fm = new FormularioMercadoria(this,true);
+        fm.setModal(rootPaneCheckingEnabled);
         fm.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
@@ -256,7 +272,8 @@ public class AreaTrabalho extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        FormularioTotalDia ftd = new FormularioTotalDia();
+        FormularioTotalDia ftd = new FormularioTotalDia(this,true);
+        ftd.setModal(rootPaneCheckingEnabled);
         ftd.setVisible(true);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
@@ -266,7 +283,8 @@ public class AreaTrabalho extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        FormularioEstoque fe = new FormularioEstoque();
+        FormularioEstoque fe = new FormularioEstoque(this,true);
+        fe.setModal(rootPaneCheckingEnabled);
         fe.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
@@ -275,6 +293,10 @@ public class AreaTrabalho extends javax.swing.JFrame {
         this.dispose();
         fl.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        lblLogado.setText(UsuarioAtual);
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -303,13 +325,6 @@ public class AreaTrabalho extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
-    private javax.swing.JMenu jMenu7;
-    private javax.swing.JMenu jMenu8;
-    private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar3;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
@@ -322,6 +337,14 @@ public class AreaTrabalho extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblLogado;
+    public javax.swing.JMenu menuCliente;
+    private javax.swing.JMenu menuConfig;
+    public javax.swing.JMenu menuFornecedores;
+    public javax.swing.JMenu menuMercadorias;
+    private javax.swing.JMenu menuSair;
+    public javax.swing.JMenu menuUsuario;
+    private javax.swing.JMenu menuVendas;
     private javax.swing.JDesktopPane painelDesktop;
     // End of variables declaration//GEN-END:variables
 }

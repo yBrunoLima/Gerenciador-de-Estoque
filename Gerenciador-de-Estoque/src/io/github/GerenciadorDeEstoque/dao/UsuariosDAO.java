@@ -147,9 +147,22 @@ public class UsuariosDAO {
             stmt.setString(2,senha);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                JOptionPane.showMessageDialog(null, "Seja Bem Vindo");
-                AreaTrabalho at = new AreaTrabalho();
-                at.setVisible(true);
+                if (rs.getString("TipoUsuario").equals("Administrador")) {    
+                    AreaTrabalho at = new AreaTrabalho();
+                    at.UsuarioAtual = rs.getString("nome");
+                    JOptionPane.showMessageDialog(null, "Seja Bem Vindo " + at.UsuarioAtual);
+                    at.setVisible(true);
+                }else
+                if (rs.getString("TipoUsuario").equals("Comum")) {    
+                    AreaTrabalho at = new AreaTrabalho();
+                    at.UsuarioAtual = rs.getString("nome");
+                    at.menuCliente.setEnabled(false);
+                    at.menuFornecedores.setEnabled(false);
+                    at.menuMercadorias.setEnabled(false);
+                    at.menuUsuario.setEnabled(false);
+                    JOptionPane.showMessageDialog(null, "Seja Bem Vindo " + at.UsuarioAtual);
+                    at.setVisible(true);
+                }
             }else{
                 JOptionPane.showMessageDialog(null, "Dados incorretos");
             }

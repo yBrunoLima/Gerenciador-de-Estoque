@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author tkmaia
  */
-public class FormularioEstoque extends javax.swing.JFrame {
+public class FormularioEstoque extends javax.swing.JDialog {
     int idMercadoria;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormularioEstoque.class.getName());
     
@@ -42,7 +42,8 @@ public class FormularioEstoque extends javax.swing.JFrame {
     /**
      * Creates new form FormularioEstoque
      */
-    public FormularioEstoque() {
+    public FormularioEstoque(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
     }
 
@@ -354,7 +355,7 @@ public class FormularioEstoque extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new FormularioEstoque().setVisible(true));
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

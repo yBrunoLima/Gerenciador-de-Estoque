@@ -255,6 +255,7 @@ public class FormularioHistorico extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new FormularioHistorico().setVisible(true));
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
