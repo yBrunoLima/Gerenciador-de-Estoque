@@ -620,7 +620,7 @@ public class FormularioVendas extends javax.swing.JFrame {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         listar();
         Date agr = new Date();
-        SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
         String dataform = fmt.format(agr);
         txtData.setText(dataform);
     }//GEN-LAST:event_formWindowActivated

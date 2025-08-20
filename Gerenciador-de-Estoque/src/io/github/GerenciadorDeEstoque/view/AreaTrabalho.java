@@ -119,6 +119,11 @@ public class AreaTrabalho extends javax.swing.JFrame {
         jMenu6.add(jMenuItem1);
 
         jMenuItem2.setText("Controle de Estoque");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu6.add(jMenuItem2);
 
         jMenuBar3.add(jMenu6);
@@ -126,12 +131,27 @@ public class AreaTrabalho extends javax.swing.JFrame {
         jMenu7.setText("Vendas");
 
         jMenuItem5.setText("Abrir Ponto de Venda");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu7.add(jMenuItem5);
 
         jMenuItem6.setText("Fluxo do dia");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         jMenu7.add(jMenuItem6);
 
         jMenuItem7.setText("Historico");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         jMenu7.add(jMenuItem7);
 
         jMenuBar3.add(jMenu7);
@@ -194,6 +214,26 @@ public class AreaTrabalho extends javax.swing.JFrame {
         FormularioMercadoria fm = new FormularioMercadoria();
         fm.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        FormularioVendas fv = new FormularioVendas();
+        fv.setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        FormularioTotalDia ftd = new FormularioTotalDia();
+        ftd.setVisible(true);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        FormularioHistorico fh = new FormularioHistorico();
+        fh.setVisible(true);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        FormularioEstoque fe = new FormularioEstoque();
+        fe.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments

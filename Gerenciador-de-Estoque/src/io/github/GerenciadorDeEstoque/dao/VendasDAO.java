@@ -84,4 +84,20 @@ public class VendasDAO {
         }
     }
     
+    public Double TotalDia(LocalDate data){
+        try {
+            Double totalDia=0.0;
+            String sql = "select sum(valortotal) as total from Venda where datavenda = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1,data.toString());
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                totalDia = rs.getDouble("total");
+            }
+            return totalDia;
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao buscar total do dia");
+        }
+    }
+    
 }
