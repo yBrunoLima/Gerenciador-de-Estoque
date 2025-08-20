@@ -24,7 +24,7 @@ public class relVendas {
             conec.conecta();
             conec.executaSql("SELECT v.ID_Venda AS ID, DATE_FORMAT(v.DataVenda, '%d/%m/%Y') as Data, c.Nome AS Cliente, CONCAT('R$ ', FORMAT(v.ValorTotal, 2, 'pt_BR')) as Total FROM Venda AS v INNER JOIN Cliente AS c ON (v.ID_Cliente = c.ID_Cliente);");
             JRResultSetDataSource jr = new JRResultSetDataSource(conec.resultSet);
-            JasperPrint jp = JasperFillManager.fillReport("C:\\Users\\thall\\OneDrive\\Documentos\\Gerenciador-de-Estoque\\Gerenciador-de-Estoque\\src\\relatorios\\relVendas.jasper", new HashMap(),jr);
+            JasperPrint jp = JasperFillManager.fillReport("relVendas.jasper", new HashMap(),jr);
             JasperViewer.viewReport(jp, false);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "erro ao gerar relatorio");

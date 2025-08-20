@@ -24,7 +24,7 @@ public class relFinanceiro {
             conec.conecta();
             conec.executaSql("SELECT CONCAT('R$ ', FORMAT(SUM(IF(DataVenda = CURDATE(), ValorTotal, 0)), 2, 'pt_BR')) AS TotalHoje, CONCAT('R$ ', FORMAT(SUM(IF(YEARWEEK(DataVenda, 0) = YEARWEEK(CURDATE(), 0), ValorTotal, 0)), 2, 'pt_BR')) AS TotalSemana, CONCAT('R$ ', FORMAT(SUM(IF(YEAR(DataVenda) = YEAR(CURDATE()) AND MONTH(DataVenda) = MONTH(CURDATE()), ValorTotal, 0)), 2, 'pt_BR')) AS TotalMes FROM Venda;");
             JRResultSetDataSource jr = new JRResultSetDataSource(conec.resultSet);
-            JasperPrint jp = JasperFillManager.fillReport("C:\\Users\\thall\\OneDrive\\Documentos\\Gerenciador-de-Estoque\\Gerenciador-de-Estoque\\src\\relatorios\\relFinanceiro.jasper", new HashMap(),jr);
+            JasperPrint jp = JasperFillManager.fillReport("relFinanceiro.jasper", new HashMap(),jr);
             JasperViewer.viewReport(jp, false);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "erro ao gerar relatorio");
