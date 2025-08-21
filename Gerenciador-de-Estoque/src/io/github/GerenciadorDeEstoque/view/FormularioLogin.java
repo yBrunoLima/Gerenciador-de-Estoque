@@ -13,6 +13,10 @@ import javax.swing.JOptionPane;
  */
 public class FormularioLogin extends javax.swing.JFrame {
     
+    static {
+        System.setProperty("sun.java2d.uiScale", "2");
+    }
+    
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormularioLogin.class.getName());
 
     /**
@@ -20,8 +24,9 @@ public class FormularioLogin extends javax.swing.JFrame {
      */
     public FormularioLogin() {
         initComponents();
+        pack();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,6 +47,7 @@ public class FormularioLogin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Tela de Login");
         setResizable(false);
+        setSize(new java.awt.Dimension(300, 300));
 
         jLabel1.setFont(new java.awt.Font("Liberation Sans", 0, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -161,7 +167,23 @@ public class FormularioLogin extends javax.swing.JFrame {
             logger.log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+       
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(FormularioLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(FormularioLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(FormularioLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(FormularioLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new FormularioLogin().setVisible(true));
     }

@@ -5,10 +5,13 @@
  */
 package relatorios;
 
-import io.github.GerenciadorDeEstoque.jdbc.ConexaoRelatorios;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
-import net.sf.jasperreports.engine.JRResultSetDataSource;
+import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JasperViewer;
@@ -18,16 +21,50 @@ import net.sf.jasperreports.view.JasperViewer;
  * @author thall
  */
 public class relVendas {
-    ConexaoRelatorios conec = new ConexaoRelatorios();
+
     public relVendas() {
+        Connection conexao = null;
+
         try {
-            conec.conecta();
-            conec.executaSql("SELECT v.ID_Venda AS ID, DATE_FORMAT(v.DataVenda, '%d/%m/%Y') as Data, c.Nome AS Cliente, CONCAT('R$ ', FORMAT(v.ValorTotal, 2, 'pt_BR')) as Total FROM Venda AS v INNER JOIN Cliente AS c ON (v.ID_Cliente = c.ID_Cliente);");
-            JRResultSetDataSource jr = new JRResultSetDataSource(conec.resultSet);
-            JasperPrint jp = JasperFillManager.fillReport("relVendas.jasper", new HashMap(),jr);
+            String driver = "com.mysql.cj.jdbc.Driver";
+            String url = "jdbc:mysql://localhost/GerenciadorDeEstoque";
+            String usuario = "root";
+            String senha = "";
+            
+            Class.forName(driver);
+            conexao = DriverManager.getConnection(url, usuario, senha);
+
+            String caminhoJasper = "relatorios/relVendas.jasper";
+            InputStream relatorioStream = getClass().getClassLoader().getResourceAsStream(caminhoJasper);
+
+            if (relatorioStream == null) {
+                throw new JRException("Arquivo .jasper não encontrado no caminho: " + caminhoJasper);
+            }
+
+            JasperPrint jp = JasperFillManager.fillReport(relatorioStream, new HashMap<>(), conexao);
+
             JasperViewer.viewReport(jp, false);
+
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "Erro: Driver do banco de dados não encontrado.\nVerifique se o JAR do MySQL Connector/J está nas bibliotecas.");
+            e.printStackTrace();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro de conexão com o banco de dados:\n" + e.getMessage());
+            e.printStackTrace();
+        } catch (JRException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao gerar o relatório:\n" + e.getMessage());
+            e.printStackTrace();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "erro ao gerar relatorio");
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro inesperado:\n" + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            if (conexao != null) {
+                try {
+                    conexao.close();
+                } catch (SQLException ex) {
+                    
+                }
+            }
         }
     }
     

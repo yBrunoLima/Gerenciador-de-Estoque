@@ -4,7 +4,7 @@
  */
 package io.github.GerenciadorDeEstoque.view;
 
-
+import com.sun.jdi.IntegerValue;
 import io.github.GerenciadorDeEstoque.dao.ClientesDAO;
 import io.github.GerenciadorDeEstoque.dao.MercadoriasDAO;
 import io.github.GerenciadorDeEstoque.model.Clientes;
@@ -537,7 +537,9 @@ public class FormularioVendas extends javax.swing.JFrame {
             FormularioPagamento telap = new FormularioPagamento();
             telap.cliente = cliente;
             telap.meus_produtos = meus_produtos;
-            total -= total * (Double.valueOf(txtDesconto.getText())/100);
+            if(Double.valueOf(txtDesconto.getText())<=100){
+                total -= total * (Double.valueOf(txtDesconto.getText())/100);
+            }
             telap.txtTotal.setText(String.valueOf(total));
             telap.setVisible(true);
             this.dispose();
@@ -579,6 +581,9 @@ public class FormularioVendas extends javax.swing.JFrame {
             int quantidade = Integer.valueOf(txtQtd.getText());
             preco = Double.valueOf(txtPreco.getText());
             qtd = Integer.valueOf(txtQtd.getText());
+            if (qtd<0) {
+                qtd *= -1;
+            }
             if (estoque>=quantidade) {
                 subtotal = preco*qtd;
                 total += subtotal;
@@ -587,7 +592,7 @@ public class FormularioVendas extends javax.swing.JFrame {
                 meus_produtos.addRow(new Object[]{
                 txtCodigo.getText(),
                 txtNomeProduto.getText(),
-                txtQtd.getText(),
+                String.valueOf(qtd),
                 txtPreco.getText(),
                 subtotal
                 });
@@ -673,7 +678,23 @@ public class FormularioVendas extends javax.swing.JFrame {
             logger.log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        System.setProperty("sun.java2d.uiScale", "2");
+         try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(FormularioVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(FormularioVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(FormularioVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(FormularioVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new FormularioVendas().setVisible(true));
     }
