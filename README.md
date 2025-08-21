@@ -4,7 +4,8 @@ Discentes: Bruno Lima e Thalles Maia
 
 ## Banco de Dados
 O arquivo .sql está configurado para criar todo o banco de dados necessário. Mysql com usuario padrão "root" e sem senha "".<br>
-No Banco de Dados já estará inserido dois usuários para o sistema: Um com permissão total de administrador (Login: admin, Senha: admin), e outro com restrições: (Login: comum, Senha: comum)
+No Banco de Dados já estará inserido dois usuários para o sistema: Um com permissão total de administrador (Login: admin, Senha: admin), e outro com restrições: (Login: comum, Senha: comum)<br>
+Lembre de estar com o Mysql rodando antes de usar o sistema.
 
 ## Como Usar
 1. Acesso
