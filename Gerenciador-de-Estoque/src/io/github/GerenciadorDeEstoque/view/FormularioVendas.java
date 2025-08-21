@@ -294,6 +294,8 @@ public class FormularioVendas extends javax.swing.JFrame {
 
         txtQtd.setText("1");
 
+        txtDesconto.setText("0");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
