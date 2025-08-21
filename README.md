@@ -1,5 +1,5 @@
 # Gerenciador-de-Estoque
-Trabalho da matéria de Desenvolvimento de Sistemas Corporativos do curso de Bacharelado em Sistemas de Informação do IFNMG
+Trabalho da matéria de Desenvolvimento de Sistemas Corporativos do curso de Bacharelado em Sistemas de Informação do IFNMG<br>
 Discentes: Bruno Lima e Thalles Maia
 
 ## Banco de Dados
