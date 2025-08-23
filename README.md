@@ -9,6 +9,7 @@ Lembre de estar com o Mysql rodando antes de usar o sistema.
 
 ## Como Usar
 1. Acesso
+  - Clone o repositório 
   - Vá para `Gerenciador-de-Estoque/Gerenciador-de-Estoque/dist` e execute o .jar (Sistema desenvolvido em Java 17)
   - Logue com as credenciais de Administrador ou Usuário Comum
 2. CRUDS's
